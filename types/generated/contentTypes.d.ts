@@ -846,6 +846,12 @@ export interface ApiStudentStudent extends Schema.CollectionType {
       'manyToMany',
       'api::class-room.class-room'
     >;
+    mobile: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+        maxLength: 10;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

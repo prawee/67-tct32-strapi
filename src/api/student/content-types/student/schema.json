@@ -20,6 +20,12 @@
       "relation": "manyToMany",
       "target": "api::class-room.class-room",
       "mappedBy": "students"
+    },
+    "mobile": {
+      "type": "string",
+      "required": true,
+      "minLength": 10,
+      "maxLength": 10
     }
   }
 }
