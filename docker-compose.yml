@@ -34,3 +34,5 @@ services:
     ports:
       - ${DATABASE_PORT}:5432
     restart: always
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
