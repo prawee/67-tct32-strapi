@@ -11,8 +11,8 @@ services:
       - 8080:1337
     environment:
       - DATABASE_CLIENT=${DATABASE_CLIENT}
-      # - DATABASE_HOST=${DATABASE_HOST}
-      - DATABASE_HOST=db
+      - DATABASE_HOST=${DATABASE_HOST}
+      # - DATABASE_HOST=db
       - DATABASE_PORT=${DATABASE_PORT}
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_USERNAME=${DATABASE_USERNAME}
@@ -33,8 +33,16 @@ services:
       - POSTGRES_USER=${DATABASE_USERNAME}
       - POSTGRES_DB=${DATABASE_NAME}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-    # ports:
-    #   - ${DATABASE_PORT}:5432
+    ports:
+      - ${DATABASE_PORT}:5432
     restart: always
     volumes:
       - ./database/data:/var/lib/postgresql/data
+  caddy:
+    image: caddy:latest
+    restart: always
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
